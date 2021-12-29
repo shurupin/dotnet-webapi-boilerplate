@@ -9,9 +9,6 @@ public partial class Initial : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)
     {
-        migrationBuilder.EnsureSchema(
-            name: "IDENTITY");
-
         migrationBuilder.AlterDatabase()
             .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -67,7 +64,6 @@ public partial class Initial : Migration
 
         migrationBuilder.CreateTable(
             name: "Roles",
-            schema: "IDENTITY",
             columns: table => new
             {
                 Id = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -91,7 +87,6 @@ public partial class Initial : Migration
 
         migrationBuilder.CreateTable(
             name: "Users",
-            schema: "IDENTITY",
             columns: table => new
             {
                 Id = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -175,7 +170,6 @@ public partial class Initial : Migration
 
         migrationBuilder.CreateTable(
             name: "RoleClaims",
-            schema: "IDENTITY",
             columns: table => new
             {
                 Id = table.Column<int>(type: "int", nullable: false)
@@ -205,7 +199,6 @@ public partial class Initial : Migration
                 table.ForeignKey(
                     name: "FK_RoleClaims_Roles_RoleId",
                     column: x => x.RoleId,
-                    principalSchema: "IDENTITY",
                     principalTable: "Roles",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
@@ -214,7 +207,6 @@ public partial class Initial : Migration
 
         migrationBuilder.CreateTable(
             name: "UserClaims",
-            schema: "IDENTITY",
             columns: table => new
             {
                 Id = table.Column<int>(type: "int", nullable: false)
@@ -232,7 +224,6 @@ public partial class Initial : Migration
                 table.ForeignKey(
                     name: "FK_UserClaims_Users_UserId",
                     column: x => x.UserId,
-                    principalSchema: "IDENTITY",
                     principalTable: "Users",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
@@ -241,7 +232,6 @@ public partial class Initial : Migration
 
         migrationBuilder.CreateTable(
             name: "UserLogins",
-            schema: "IDENTITY",
             columns: table => new
             {
                 LoginProvider = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -259,7 +249,6 @@ public partial class Initial : Migration
                 table.ForeignKey(
                     name: "FK_UserLogins_Users_UserId",
                     column: x => x.UserId,
-                    principalSchema: "IDENTITY",
                     principalTable: "Users",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
@@ -268,7 +257,6 @@ public partial class Initial : Migration
 
         migrationBuilder.CreateTable(
             name: "UserRoles",
-            schema: "IDENTITY",
             columns: table => new
             {
                 UserId = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -282,14 +270,12 @@ public partial class Initial : Migration
                 table.ForeignKey(
                     name: "FK_UserRoles_Roles_RoleId",
                     column: x => x.RoleId,
-                    principalSchema: "IDENTITY",
                     principalTable: "Roles",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
                 table.ForeignKey(
                     name: "FK_UserRoles_Users_UserId",
                     column: x => x.UserId,
-                    principalSchema: "IDENTITY",
                     principalTable: "Users",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
@@ -298,7 +284,6 @@ public partial class Initial : Migration
 
         migrationBuilder.CreateTable(
             name: "UserTokens",
-            schema: "IDENTITY",
             columns: table => new
             {
                 UserId = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -316,7 +301,6 @@ public partial class Initial : Migration
                 table.ForeignKey(
                     name: "FK_UserTokens_Users_UserId",
                     column: x => x.UserId,
-                    principalSchema: "IDENTITY",
                     principalTable: "Users",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
@@ -330,44 +314,37 @@ public partial class Initial : Migration
 
         migrationBuilder.CreateIndex(
             name: "IX_RoleClaims_RoleId",
-            schema: "IDENTITY",
             table: "RoleClaims",
             column: "RoleId");
 
         migrationBuilder.CreateIndex(
             name: "RoleNameIndex",
-            schema: "IDENTITY",
             table: "Roles",
             columns: new[] { "NormalizedName", "Tenant" },
             unique: true);
 
         migrationBuilder.CreateIndex(
             name: "IX_UserClaims_UserId",
-            schema: "IDENTITY",
             table: "UserClaims",
             column: "UserId");
 
         migrationBuilder.CreateIndex(
             name: "IX_UserLogins_UserId",
-            schema: "IDENTITY",
             table: "UserLogins",
             column: "UserId");
 
         migrationBuilder.CreateIndex(
             name: "IX_UserRoles_RoleId",
-            schema: "IDENTITY",
             table: "UserRoles",
             column: "RoleId");
 
         migrationBuilder.CreateIndex(
             name: "EmailIndex",
-            schema: "IDENTITY",
             table: "Users",
             column: "NormalizedEmail");
 
         migrationBuilder.CreateIndex(
             name: "UserNameIndex",
-            schema: "IDENTITY",
             table: "Users",
             column: "NormalizedUserName",
             unique: true);
@@ -382,34 +359,27 @@ public partial class Initial : Migration
             name: "Products");
 
         migrationBuilder.DropTable(
-            name: "RoleClaims",
-            schema: "IDENTITY");
+            name: "RoleClaims");
 
         migrationBuilder.DropTable(
-            name: "UserClaims",
-            schema: "IDENTITY");
+            name: "UserClaims");
 
         migrationBuilder.DropTable(
-            name: "UserLogins",
-            schema: "IDENTITY");
+            name: "UserLogins");
 
         migrationBuilder.DropTable(
-            name: "UserRoles",
-            schema: "IDENTITY");
+            name: "UserRoles");
 
         migrationBuilder.DropTable(
-            name: "UserTokens",
-            schema: "IDENTITY");
+            name: "UserTokens");
 
         migrationBuilder.DropTable(
             name: "Brands");
 
         migrationBuilder.DropTable(
-            name: "Roles",
-            schema: "IDENTITY");
+            name: "Roles");
 
         migrationBuilder.DropTable(
-            name: "Users",
-            schema: "IDENTITY");
+            name: "Users");
     }
 }

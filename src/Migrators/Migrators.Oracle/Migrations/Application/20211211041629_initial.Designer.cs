@@ -176,7 +176,7 @@ namespace Migrators.Oracle.Migrations.Application
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("\"NormalizedName\" IS NOT NULL AND \"Tenant\" IS NOT NULL");
 
-                    b.ToTable("Roles", "IDENTITY");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("DN.WebApi.Infrastructure.Identity.Models.ApplicationRoleClaim", b =>
@@ -222,7 +222,7 @@ namespace Migrators.Oracle.Migrations.Application
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RoleClaims", "IDENTITY");
+                    b.ToTable("RoleClaims");
                 });
 
             modelBuilder.Entity("DN.WebApi.Infrastructure.Identity.Models.ApplicationUser", b =>
@@ -312,7 +312,7 @@ namespace Migrators.Oracle.Migrations.Application
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("\"NormalizedUserName\" IS NOT NULL");
 
-                    b.ToTable("Users", "IDENTITY");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -337,7 +337,7 @@ namespace Migrators.Oracle.Migrations.Application
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserClaims", "IDENTITY");
+                    b.ToTable("UserClaims");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -359,7 +359,7 @@ namespace Migrators.Oracle.Migrations.Application
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserLogins", "IDENTITY");
+                    b.ToTable("UserLogins");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -374,7 +374,7 @@ namespace Migrators.Oracle.Migrations.Application
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("UserRoles", "IDENTITY");
+                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -393,7 +393,7 @@ namespace Migrators.Oracle.Migrations.Application
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("UserTokens", "IDENTITY");
+                    b.ToTable("UserTokens");
                 });
 
             modelBuilder.Entity("DN.WebApi.Domain.Catalog.Product", b =>
